@@ -4,6 +4,17 @@ export function smurfs(state = [], action) {
   switch (action.type) {
     case types.GET_SMURFS:
       return action.payload;
+    case types.ADD_SMURF:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+export function error(state = null, action) {
+  switch (action.type) {
+    case types.ERROR:
+      return action.payload;
     default:
       return state;
   }
