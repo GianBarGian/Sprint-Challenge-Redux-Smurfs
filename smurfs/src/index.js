@@ -5,11 +5,13 @@ import App from './components/App';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { smurfs } from './reducers';
+import { smurfs, error, spinner } from './reducers';
 
 
 const rootReducer = combineReducers({
   smurfs,
+  error,
+  spinner,
 });
 
 const store = createStore(

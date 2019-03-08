@@ -19,6 +19,17 @@ export function error(state = null, action) {
       return state;
   }
 }
+
+export function spinner(state = false, action) {
+  switch (action.type) {
+    case types.SPINNER_ON:
+     return true;
+    case types.SPINNER_OFF:
+      return false;
+    default: 
+      return state;
+  }
+}
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {

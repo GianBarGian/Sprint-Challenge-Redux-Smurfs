@@ -12,12 +12,12 @@ export const getSmurfs = () => dispatch => {
   dispatch({ type: SPINNER_ON });
   axios.get('http://localhost:3333/smurfs')
     .then(res => {
-      dispatch({ type: GET_SMURFS, payload: res.data})
+      dispatch({ type: GET_SMURFS, payload: res.data});
+      dispatch({ type: SPINNER_OFF })
     })
     .catch(err => {
       dispatch({ type: ERROR, payload: err });
     })
-  dispatch({ type: SPINNER_OFF });
 }
 
 export const addSmurf = smurf => dispatch => {
@@ -25,9 +25,9 @@ export const addSmurf = smurf => dispatch => {
   axios.post('http://localhost:3333/smurfs', smurf)
     .then(res => {
       dispatch({ type: ADD_SMURF, payload: res.data})
+      dispatch({ type: SPINNER_OFF })
     })
     .catch(err => {
       dispatch({ type: ERROR, payload: err });
     })
-  dispatch({ type: SPINNER_OFF });
 }
