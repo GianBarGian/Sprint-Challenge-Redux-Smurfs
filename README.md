@@ -23,8 +23,19 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions are objects that contains data that are consumed by reducers to change states in the store. They need at least a type property, but they can carry any additional payload is needed.
+Reducers are functions that consume a state and an action and return the new state. Usually if the action is not present in the reducer they return the old state, ootherwise they return a brand new state to substitute the old one. This is because reducers need to be pure functions. 
+The store is where all our state are conserved. The store is an object, it acts as the only source of truth because it holds all the states that are passed directly from him to the components it needs them.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is when state is conserved in a separate “place” (like the redux store, or on the outer container of your app) so that any component is  “dumb” and just receive the state as props and display the right thing. Instead component state is when a components holds is own state and use it directly. 
+Usually application state is better for a few reasons but if a component needs a state that is sure that will be just consumed by him (and maybe his children) it’s ok to have component state. This normally translates in smaller applications using component state a bit more while large scalable applications ,where you might be in the future needs some states consumed by some other components, normally use application state.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+React Thunk is a middleware that permits us to perform asynchronous operations before invoking the reducers.  Action creators using thunk looks like functions that “do stuff” before returning the action object that will be passed in the reducers.
 
 ## Project Set Up
 
