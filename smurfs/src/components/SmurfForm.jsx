@@ -9,7 +9,7 @@ export class SmurfForm extends React.Component {
     ageRef = React.createRef();
     heightRef = React.createRef();
 
-    onAdd = () => {
+    onAdd = event => {
         const nameInput = this.nameRef.current.value;
         const ageInput = this.ageRef.current.value;
         const heightInput = this.heightRef.current.value;
@@ -19,7 +19,7 @@ export class SmurfForm extends React.Component {
             age: ageInput,
             height: heightInput,
         }
-        console.log(newSmurf);
+        event.preventDefault();
         this.props.addSmurf(newSmurf);
 
         this.nameRef.current.value = '';
@@ -33,10 +33,7 @@ export class SmurfForm extends React.Component {
                 <input ref={this.nameRef} type="text" placeholder="name" />
                 <input ref={this.ageRef} type="text" placeholder="age" />
                 <input ref={this.heightRef} type="text" placeholder="height" />
-                <button onClick={(e) => {
-                    e.preventDefault();
-                    this.onAdd()
-                }}>Add Smurf</button>
+                <button onClick={e => this.onAdd(e)}>Add Smurf</button>
             </form>
         )
     }
